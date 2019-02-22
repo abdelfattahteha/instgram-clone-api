@@ -67,7 +67,7 @@ exports.deletePost = async (req,res,next) => {      // params(id)
         if (post.imageUrl) {
             clearImage(post.imageUrl);
         }
-        const deletedPost = await Post.findByIdAndRemove(req.params.id);
+        const deletedPost = await Post.findByIdAndRemove(req.params.id).populate('user', '-password');
 
         // using web socket
         socket_io.getIO().emit('posts', {action: 'delete', post:deletedPost});
