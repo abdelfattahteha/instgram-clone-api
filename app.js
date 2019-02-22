@@ -11,7 +11,7 @@ const path = require('path');
 
 // connect to DB
 mongoose
-    .connect(`mongodb+srv://${process.env.MONGO_DATABASE_USER}:${process.env.MONGO_DATABASE_PASSWORD}@instgram-lqea5.mongodb.net/instgram`)
+    .connect(`mongodb://localhost/instgramapp`)
     .then( () => { console.log("Database connected successfully...")})
     .catch( err => console.log("Database connection error..."));
 
