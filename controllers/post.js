@@ -98,8 +98,10 @@ exports.updatePost = async (req,res,next) => {      // params(id) - req.body
 
 
         // handle image if found
-        if (req.file) {
+        if (req.file && post.imageUrl) {
             clearImage(post.imageUrl);
+        }
+        if (req.file) {
             let imageUrl = `${req.protocol}://${req.get("host")}/images/`;
             post.imageUrl = imageUrl + req.file.filename;
         }
