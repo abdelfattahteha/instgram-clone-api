@@ -12,7 +12,7 @@ router.post('/signup', [
         .withMessage("Firstname should be at least 4 characters."),
     body('lastname').isLength({min:4})
         .withMessage("Lastname should be at least 4 characters."),
-    body('email').isEmail().normalizeEmail()
+    body('email').isEmail()
         .withMessage("E-mail must be valid.")
         .custom( (value, {req}) => {
             return User.findOne({email: value})
@@ -36,7 +36,7 @@ router.post('/signup', [
 ] ,authController.signup);
 
 router.post('/login', [
-    body('email').isEmail().normalizeEmail()
+    body('email').isEmail()
         .withMessage("E-mail Not Valid!")
         .custom( (value, {req}) => {
             return User.findOne({email: value})
