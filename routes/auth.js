@@ -66,7 +66,7 @@ router.post('/login', [
 router.get('/checkemail/:email', authController.checkEmail);
 
 router.post('/social-login',[
-    body('email').isEmail().normalizeEmail()
+    body('email').isEmail()
     .withMessage("E-mail must be valid.")],
     
     authController.socialLogin);
